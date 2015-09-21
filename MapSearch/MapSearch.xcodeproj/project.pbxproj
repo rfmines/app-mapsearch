@@ -1,0 +1,441 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2F39663B1BA8A5F3001FE052 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F39663A1BA8A5F3001FE052 /* AppDelegate.m */; };
+		2F39663D1BA8A5F3001FE052 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F39663C1BA8A5F3001FE052 /* main.m */; };
+		2F39663F1BA8A5F3001FE052 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F39663E1BA8A5F3001FE052 /* Images.xcassets */; };
+		2F3966421BA8A5F3001FE052 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F3966401BA8A5F3001FE052 /* MainMenu.xib */; };
+		2F39664E1BA8A5F3001FE052 /* MapSearchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F39664D1BA8A5F3001FE052 /* MapSearchTests.m */; };
+		2F3966591BA8A621001FE052 /* MapSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F3966571BA8A621001FE052 /* MapSearch.m */; };
+		2F39665A1BA8A621001FE052 /* MapSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F3966571BA8A621001FE052 /* MapSearch.m */; };
+		2F39665C1BA8A640001FE052 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F39665B1BA8A640001FE052 /* MapKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2F3966481BA8A5F3001FE052 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2F39662C1BA8A5F3001FE052 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2F3966331BA8A5F3001FE052;
+			remoteInfo = MapSearch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2F3966341BA8A5F3001FE052 /* MapSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F3966381BA8A5F3001FE052 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F3966391BA8A5F3001FE052 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2F39663A1BA8A5F3001FE052 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2F39663C1BA8A5F3001FE052 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2F39663E1BA8A5F3001FE052 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		2F3966411BA8A5F3001FE052 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		2F3966471BA8A5F3001FE052 /* MapSearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MapSearchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F39664C1BA8A5F3001FE052 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F39664D1BA8A5F3001FE052 /* MapSearchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapSearchTests.m; sourceTree = "<group>"; };
+		2F3966571BA8A621001FE052 /* MapSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapSearch.m; sourceTree = "<group>"; };
+		2F3966581BA8A621001FE052 /* MapSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapSearch.h; sourceTree = "<group>"; };
+		2F39665B1BA8A640001FE052 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		2F39665D1BA8A640001FE052 /* MapSearch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MapSearch.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2F3966311BA8A5F3001FE052 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F39665C1BA8A640001FE052 /* MapKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F3966441BA8A5F3001FE052 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2F39662B1BA8A5F3001FE052 = {
+			isa = PBXGroup;
+			children = (
+				2F39665B1BA8A640001FE052 /* MapKit.framework */,
+				2F3966361BA8A5F3001FE052 /* MapSearch */,
+				2F39664A1BA8A5F3001FE052 /* MapSearchTests */,
+				2F3966351BA8A5F3001FE052 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2F3966351BA8A5F3001FE052 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2F3966341BA8A5F3001FE052 /* MapSearch.app */,
+				2F3966471BA8A5F3001FE052 /* MapSearchTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2F3966361BA8A5F3001FE052 /* MapSearch */ = {
+			isa = PBXGroup;
+			children = (
+				2F39665D1BA8A640001FE052 /* MapSearch.entitlements */,
+				2F3966571BA8A621001FE052 /* MapSearch.m */,
+				2F3966581BA8A621001FE052 /* MapSearch.h */,
+				2F3966391BA8A5F3001FE052 /* AppDelegate.h */,
+				2F39663A1BA8A5F3001FE052 /* AppDelegate.m */,
+				2F39663E1BA8A5F3001FE052 /* Images.xcassets */,
+				2F3966401BA8A5F3001FE052 /* MainMenu.xib */,
+				2F3966371BA8A5F3001FE052 /* Supporting Files */,
+			);
+			path = MapSearch;
+			sourceTree = "<group>";
+		};
+		2F3966371BA8A5F3001FE052 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2F3966381BA8A5F3001FE052 /* Info.plist */,
+				2F39663C1BA8A5F3001FE052 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2F39664A1BA8A5F3001FE052 /* MapSearchTests */ = {
+			isa = PBXGroup;
+			children = (
+				2F39664D1BA8A5F3001FE052 /* MapSearchTests.m */,
+				2F39664B1BA8A5F3001FE052 /* Supporting Files */,
+			);
+			path = MapSearchTests;
+			sourceTree = "<group>";
+		};
+		2F39664B1BA8A5F3001FE052 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2F39664C1BA8A5F3001FE052 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2F3966331BA8A5F3001FE052 /* MapSearch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F3966511BA8A5F3001FE052 /* Build configuration list for PBXNativeTarget "MapSearch" */;
+			buildPhases = (
+				2F3966301BA8A5F3001FE052 /* Sources */,
+				2F3966311BA8A5F3001FE052 /* Frameworks */,
+				2F3966321BA8A5F3001FE052 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MapSearch;
+			productName = MapSearch;
+			productReference = 2F3966341BA8A5F3001FE052 /* MapSearch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2F3966461BA8A5F3001FE052 /* MapSearchTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F3966541BA8A5F3001FE052 /* Build configuration list for PBXNativeTarget "MapSearchTests" */;
+			buildPhases = (
+				2F3966431BA8A5F3001FE052 /* Sources */,
+				2F3966441BA8A5F3001FE052 /* Frameworks */,
+				2F3966451BA8A5F3001FE052 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2F3966491BA8A5F3001FE052 /* PBXTargetDependency */,
+			);
+			name = MapSearchTests;
+			productName = MapSearchTests;
+			productReference = 2F3966471BA8A5F3001FE052 /* MapSearchTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2F39662C1BA8A5F3001FE052 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = zakizon;
+				TargetAttributes = {
+					2F3966331BA8A5F3001FE052 = {
+						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 55G2XE5N8A;
+						SystemCapabilities = {
+							com.apple.Maps.Mac = {
+								enabled = 1;
+							};
+						};
+					};
+					2F3966461BA8A5F3001FE052 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 2F3966331BA8A5F3001FE052;
+					};
+				};
+			};
+			buildConfigurationList = 2F39662F1BA8A5F3001FE052 /* Build configuration list for PBXProject "MapSearch" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2F39662B1BA8A5F3001FE052;
+			productRefGroup = 2F3966351BA8A5F3001FE052 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2F3966331BA8A5F3001FE052 /* MapSearch */,
+				2F3966461BA8A5F3001FE052 /* MapSearchTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2F3966321BA8A5F3001FE052 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F39663F1BA8A5F3001FE052 /* Images.xcassets in Resources */,
+				2F3966421BA8A5F3001FE052 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F3966451BA8A5F3001FE052 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2F3966301BA8A5F3001FE052 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F3966591BA8A621001FE052 /* MapSearch.m in Sources */,
+				2F39663D1BA8A5F3001FE052 /* main.m in Sources */,
+				2F39663B1BA8A5F3001FE052 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F3966431BA8A5F3001FE052 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F39665A1BA8A621001FE052 /* MapSearch.m in Sources */,
+				2F39664E1BA8A5F3001FE052 /* MapSearchTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2F3966491BA8A5F3001FE052 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2F3966331BA8A5F3001FE052 /* MapSearch */;
+			targetProxy = 2F3966481BA8A5F3001FE052 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2F3966401BA8A5F3001FE052 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2F3966411BA8A5F3001FE052 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2F39664F1BA8A5F3001FE052 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		2F3966501BA8A5F3001FE052 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		2F3966521BA8A5F3001FE052 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MapSearch/MapSearch.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = MapSearch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		2F3966531BA8A5F3001FE052 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MapSearch/MapSearch.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = MapSearch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		2F3966551BA8A5F3001FE052 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MapSearchTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MapSearch.app/Contents/MacOS/MapSearch";
+			};
+			name = Debug;
+		};
+		2F3966561BA8A5F3001FE052 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MapSearchTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MapSearch.app/Contents/MacOS/MapSearch";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2F39662F1BA8A5F3001FE052 /* Build configuration list for PBXProject "MapSearch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F39664F1BA8A5F3001FE052 /* Debug */,
+				2F3966501BA8A5F3001FE052 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2F3966511BA8A5F3001FE052 /* Build configuration list for PBXNativeTarget "MapSearch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F3966521BA8A5F3001FE052 /* Debug */,
+				2F3966531BA8A5F3001FE052 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2F3966541BA8A5F3001FE052 /* Build configuration list for PBXNativeTarget "MapSearchTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F3966551BA8A5F3001FE052 /* Debug */,
+				2F3966561BA8A5F3001FE052 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2F39662C1BA8A5F3001FE052 /* Project object */;
+}
