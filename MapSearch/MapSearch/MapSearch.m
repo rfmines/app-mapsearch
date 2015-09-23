@@ -142,7 +142,8 @@
                 continue;
             }
             
-            keywords = [[NSString stringWithFormat:@"%@ %@ %@ %@ %@", name, address, city, state, zip_code] stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+            //keywords = [[NSString stringWithFormat:@"%@ %@ %@ %@ %@", name, address, city, state, zip_code] stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+            keywords = [[NSString stringWithFormat:@"%@ %@", name, zip_code] stringByReplacingOccurrencesOfString:@"\"" withString:@""];
             
             //NSLog(@"Scanned: key: %@ biz_name: %@ address: %@, city: %@ state: %@, zip_code: %@", ref, name, address, city, state, zip_code);
         }
