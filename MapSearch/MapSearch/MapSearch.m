@@ -181,7 +181,7 @@
                 [NSThread sleepForTimeInterval:10.0];
             }while(curWork != 0);
         } else {
-            [NSThread sleepForTimeInterval:1.0];
+            [NSThread sleepForTimeInterval:10.0];
         }
         
     }
