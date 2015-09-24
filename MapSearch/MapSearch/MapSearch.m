@@ -156,9 +156,7 @@
         [self search:keywords ref:(NSString*)ref withCompletionHandler:^(NSError *error, NSString *ref, NSArray *mapItems) {
             if ( error) {
                 NSLog(@"Search keywords: %@ got error: %@", keywords, [error description]);
-                NSLog(@"Will retry in 1 min ..");
-                [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:60]];
-                //[NSThread sleepForTimeInterval:10.0];
+                
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                     [self searchRows:@[row] outputFile:outFile];
                 });
