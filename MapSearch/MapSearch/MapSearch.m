@@ -174,12 +174,12 @@
         }];
         
         curWork++;
-        if (curWork >= 10) {
+        if (curWork >= 200000) {
             do {
-                [NSThread sleepForTimeInterval:10.0];
+                [NSThread sleepForTimeInterval:0.0];
             }while(curWork != 0);
         } else {
-            [NSThread sleepForTimeInterval:10.0];
+            [NSThread sleepForTimeInterval:0.0];
         }
         
     }
