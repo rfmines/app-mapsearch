@@ -158,7 +158,7 @@
         }
         [self search:keywords ref:(NSString*)ref withCompletionHandler:^(NSError *error, NSString *ref, NSArray *mapItems) {
             if ( error ) {
-                NSLog(@"Search keywords: %@ got error: %@. Will retry %d more time", keywords, [error description], retry);
+                NSLog(@"Search keywords: %@ got error: %@. Will retry %lu more time", keywords, [error description], (long)retry);
                
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                     [self searchRows:@[row] outputFile:outFile retry:retry-1];
