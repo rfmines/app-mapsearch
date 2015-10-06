@@ -13,10 +13,11 @@
 
 #import <MapKit/MapKit.h>
 
+
 @interface MapSearch : NSObject
 
 
-- (void)readCSV:(NSString*)inputFile outputFile:(NSString*)outputFile  withCompletionHandler:(void (^)(NSError *error)) block;
+- (void)readCSV:(NSString*)inputFile outputFile:(NSString*)outputFile maxRetry:(NSInteger)maxRetry withCompletionHandler:(void (^)(NSError *error)) block;
 
 @end
 

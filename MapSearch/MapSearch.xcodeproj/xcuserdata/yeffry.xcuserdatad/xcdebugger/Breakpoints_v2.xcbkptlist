@@ -10,43 +10,91 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MapSearch/MapSearch.m"
-            timestampString = "464230273.811307"
+            timestampString = "465846791.519315"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
-            landmarkName = "-searchRows:outputFile:"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "-readCSV:outputFile:maxRetry:withCompletionHandler:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MapSearch/MapSearch.m"
+            timestampString = "465846791.519315"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "-readCSV:outputFile:maxRetry:withCompletionHandler:"
             landmarkType = "5">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__35-[MapSearch searchRows:outputFile:]_block_invoke"
+                  symbolName = "-[MapSearch readCSV:outputFile:maxRetry:withCompletionHandler:]"
                   moduleName = "MapSearch"
-                  urlString = "file:///Users/yeffry/Documents/ooma/OSX_Dev/MapSearchCocoa/MapSearch/MapSearch/MapSearch.m"
-                  timestampString = "464230273.833318"
+                  urlString = "file:///Users/yeffry/Documents/ooma/OSX_Dev/MapSearch/MapSearch/MapSearch/MapSearch.m"
+                  timestampString = "465845056.872622"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "161"
-                  endingLineNumber = "161"
-                  offsetFromSymbolStart = "470">
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "481">
                </Location>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__35-[MapSearch searchRows:outputFile:]_block_invoke_2"
+                  symbolName = "__63-[MapSearch readCSV:outputFile:maxRetry:withCompletionHandler:]_block_invoke"
                   moduleName = "MapSearch"
-                  urlString = "file:///Users/yeffry/Documents/ooma/OSX_Dev/MapSearchCocoa/MapSearch/MapSearch/MapSearch.m"
-                  timestampString = "464230273.833665"
+                  urlString = "file:///Users/yeffry/Documents/ooma/OSX_Dev/MapSearch/MapSearch/MapSearch/MapSearch.m"
+                  timestampString = "465845056.872927"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "161"
-                  endingLineNumber = "161"
-                  offsetFromSymbolStart = "40">
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "29">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MapSearch/MapSearch.m"
+            timestampString = "465846791.519315"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "-readCSV:outputFile:maxRetry:withCompletionHandler:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MapSearch/AppDelegate.m"
+            timestampString = "465845022.887291"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "-applicationDidFinishLaunching:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

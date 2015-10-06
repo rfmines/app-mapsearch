@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>11478194-0783-4CED-8FE8-3B7CBE1A1CC2</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MapSearch</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>64B7EAC05154DF5F5F5E06C2B9F3D922950428F3</key>
+		<string>github.com:rfmines/app-mapsearch.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MapSearch/MapSearch.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>64B7EAC05154DF5F5F5E06C2B9F3D922950428F3</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:rfmines/app-mapsearch.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>64B7EAC05154DF5F5F5E06C2B9F3D922950428F3</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>64B7EAC05154DF5F5F5E06C2B9F3D922950428F3</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MapSearch</string>
+		</dict>
+	</array>
+</dict>
+</plist>

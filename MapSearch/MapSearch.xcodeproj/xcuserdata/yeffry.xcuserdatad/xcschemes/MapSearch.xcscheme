@@ -84,11 +84,15 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "/Users/yeffry/10k.csv"
+            argument = "${SRCROOT}/../500-control.csv"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "/Users/yeffry/10k_out.csv"
+            argument = "${SRCROOT}/../500-control-out.csv"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "5"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

@@ -34,7 +34,6 @@
 
 @synthesize workCount;
 @synthesize outputFile;
-
 - (id)init
 {
     if (self = [super init]) {
@@ -61,7 +60,7 @@
     }
 }
 
-- (void)readCSV:(NSString*)inputFile outputFile:(NSString*)outFile withCompletionHandler:(void (^)(NSError *error)) block
+- (void)readCSV:(NSString*)inputFile outputFile:(NSString*)outFile maxRetry:(NSInteger)retry withCompletionHandler:(void (^)(NSError *error)) block
 {
     if (self.workCount > 0) {
         NSLog(@"Search already in progress..");
@@ -82,6 +81,7 @@
         }
         return;
     }
+        NSLog(@"Opened input file: %@ with max_retry: %lu", inputFile, retry);
         
     NSArray *rows = [fileString componentsSeparatedByString:@"\n"];
     NSInteger count = [rows count];
@@ -90,7 +90,7 @@
     
     [self writeCSV:outputHeader filename:outFile];
         
-    [self searchRows:rows outputFile:outFile];
+    [self searchRows:rows outputFile:outFile retry:retry];
     
     if (block) {
         block(nil);
@@ -99,9 +99,8 @@
     });
 }
 
-- (void)searchRows:(NSArray*)rows outputFile:(NSString*)outFile
+- (void)searchRows:(NSArray*)rows outputFile:(NSString*)outFile retry:(NSInteger)retry
 {
-    
     NSLocale *l_en = [[NSLocale alloc] initWithLocaleIdentifier: @"en_US"];
     NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
     [f setLocale: l_en];
@@ -152,13 +151,17 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:kSearchDone object:self];
             continue;
         }
-        
+
+        if (retry == 0) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:kSearchDone object:self];
+            continue;
+        }
         [self search:keywords ref:(NSString*)ref withCompletionHandler:^(NSError *error, NSString *ref, NSArray *mapItems) {
-            if ( error) {
-                NSLog(@"Search keywords: %@ got error: %@", keywords, [error description]);
-                
+            if ( error ) {
+                NSLog(@"Search keywords: %@ got error: %@. Will retry %d more time", keywords, [error description], retry);
+               
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                    [self searchRows:@[row] outputFile:outFile];
+                    [self searchRows:@[row] outputFile:outFile retry:retry-1];
                 });
             } else {
                 for (MKMapItem *mapItem  in mapItems) {
@@ -168,9 +171,10 @@
                     
                     NSLog(@"Search keywords: %@ result: %@", keywords, out);
                 }
+                [[NSNotificationCenter defaultCenter] postNotificationName:kSearchDone object:self];
             }
             curWork--;
-            [[NSNotificationCenter defaultCenter] postNotificationName:kSearchDone object:self];
+            
         }];
         
         curWork++;
@@ -260,8 +264,6 @@
         request.naturalLanguageQuery = keywords;
         MKLocalSearchCompletionHandler completionHandler = ^(MKLocalSearchResponse *response, NSError *error) {
             if (error != nil) {
-                NSString *errorStr = [[error userInfo] valueForKey:NSLocalizedDescriptionKey];
-                NSLog(@"Error : %@", errorStr);
                 
                 if (block) {
                     block(error, ref, nil);

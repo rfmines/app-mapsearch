@@ -35,7 +35,7 @@
             [self printUsage];
            
 
-            NSAlert *alert = [NSAlert alertWithMessageText:@"Invalid arguments" defaultButton:@"Close" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Usage: MapSearch <inputfile> <outputfile>\nExample: MapSearch /Users/ooma/10k.csv /Users/ooma/10k_out.csv\n"];
+            NSAlert *alert = [NSAlert alertWithMessageText:@"Invalid arguments" defaultButton:@"Close" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Usage: MapSearch <inputfile> <outputfile> <maxretry>\nExample: MapSearch /Users/ooma/10k.csv /Users/ooma/10k_out.csv 3\n"];
             [alert runModal];
             [NSApp terminate:self];
         }
@@ -44,8 +44,16 @@
             @try {
                 NSString *inputFile = [args objectAtIndex:1];
                 NSString *outputFile = [args objectAtIndex:2];
+                NSInteger maxRetry = MAX_RETRY;
                 
-                [mapsearch readCSV:inputFile outputFile:outputFile  withCompletionHandler:^(NSError *error) {
+                if ([args count] > 3) {
+                    maxRetry = [[args objectAtIndex:3] integerValue] ;
+                    if (maxRetry == 0) {
+                        maxRetry = MAX_RETRY;
+                    }
+                }
+                
+                [mapsearch readCSV:inputFile outputFile:outputFile maxRetry:(NSInteger)maxRetry withCompletionHandler:^(NSError *error) {
                     
                 }];
             }
