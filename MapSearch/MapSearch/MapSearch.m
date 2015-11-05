@@ -178,7 +178,7 @@
         }];
         
         curWork++;
-        if (curWork >= 200000) {
+        if (curWork >= 2) {
             do {
                 [NSThread sleepForTimeInterval:0.0];
             }while(curWork != 0);
