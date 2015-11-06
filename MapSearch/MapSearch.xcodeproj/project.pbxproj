@@ -14,7 +14,7 @@
 		2F39664E1BA8A5F3001FE052 /* MapSearchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F39664D1BA8A5F3001FE052 /* MapSearchTests.m */; };
 		2F3966591BA8A621001FE052 /* MapSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F3966571BA8A621001FE052 /* MapSearch.m */; };
 		2F39665A1BA8A621001FE052 /* MapSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F3966571BA8A621001FE052 /* MapSearch.m */; };
-		2F39665C1BA8A640001FE052 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F39665B1BA8A640001FE052 /* MapKit.framework */; };
+		2F39665C1BA8A640001FE052 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F39665B1BA8A640001FE052 /* MapKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -361,8 +361,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MapSearch/MapSearch.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Developer ID Application: Yeffry Zakizon (55G2XE5N8A)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application: Yeffry Zakizon (55G2XE5N8A)";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = MapSearch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
