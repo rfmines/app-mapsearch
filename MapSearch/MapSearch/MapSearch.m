@@ -165,7 +165,9 @@
                 });
             } else {
                 for (MKMapItem *mapItem  in mapItems) {
-                    NSString *out = [NSString stringWithFormat:@"%@,%@,%@ %@,%@,%@,%@,%@\n", ref, mapItem.name, mapItem.placemark.subThoroughfare,  mapItem.placemark.thoroughfare, mapItem.placemark.locality, mapItem.placemark.postalCode, mapItem.phoneNumber, mapItem.url];
+                    NSString *phoneNumber = [mapItem.phoneNumber stringByReplacingOccurrencesOfString:@"^\\+1\\-?" withString:@"" options:NSRegularExpressionSearch range:NSMakeRange(0, [mapItem.phoneNumber length])];
+                    NSLog(@"Phonenumber %@ stripped to %@", mapItem.phoneNumber, phoneNumber);
+                    NSString *out = [NSString stringWithFormat:@"%@,%@,%@ %@,%@,%@,%@,%@\n", ref, mapItem.name, mapItem.placemark.subThoroughfare,  mapItem.placemark.thoroughfare, mapItem.placemark.locality, mapItem.placemark.postalCode, phoneNumber, mapItem.url];
                     
                     [self writeCSV:out filename:outFile];
                     
