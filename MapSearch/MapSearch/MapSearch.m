@@ -60,7 +60,7 @@
     }
 }
 
-- (void)readCSV:(NSString*)inputFile outputFile:(NSString*)outFile maxRetry:(NSInteger)retry withCompletionHandler:(void (^)(NSError *error)) block
+- (void)readCSV:(NSString*)inputFile outputFile:(NSString*)outFile maxRetry:(NSInteger)retry fiter:(NSString*)filter withCompletionHandler:(void (^)(NSError *error)) block
 {
     if (self.workCount > 0) {
         NSLog(@"Search already in progress..");
@@ -86,11 +86,11 @@
     NSArray *rows = [fileString componentsSeparatedByString:@"\n"];
     NSInteger count = [rows count];
     self.workCount = count;
-    NSString *outputHeader = @"id,name,address,city,state,zip,phone,url\n";
+    NSString *outputHeader = @"id,name,address,city,state,zip,phone,url,found\n";
     
     [self writeCSV:outputHeader filename:outFile];
         
-    [self searchRows:rows outputFile:outFile retry:retry];
+        [self searchRows:rows outputFile:outFile retry:retry filter:filter];
     
     if (block) {
         block(nil);
@@ -99,7 +99,7 @@
     });
 }
 
-- (void)searchRows:(NSArray*)rows outputFile:(NSString*)outFile retry:(NSInteger)retry
+- (void)searchRows:(NSArray*)rows outputFile:(NSString*)outFile retry:(NSInteger)retry filter:(NSString*)filter
 {
     NSLocale *l_en = [[NSLocale alloc] initWithLocaleIdentifier: @"en_US"];
     NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
@@ -144,6 +144,18 @@
             //keywords = [[NSString stringWithFormat:@"%@ %@ %@ %@ %@", name, address, city, state, zip_code] stringByReplacingOccurrencesOfString:@"\"" withString:@""];
             keywords = [[NSString stringWithFormat:@"%@ %@", name, zip_code] stringByReplacingOccurrencesOfString:@"\"" withString:@""];
             
+            if (filter != nil) {
+                NSArray *filters = [filter componentsSeparatedByString:@","];
+                keywords = @"";
+                NSDictionary *filterDict = @{@"did":did, @"name":name, @"address":address, @"city":city, @"state":state, @"zip_code":zip_code};
+                
+                for (NSString *col in filters) {
+                    
+                    NSString *value = [filterDict objectForKey:col];
+                    keywords = [keywords stringByAppendingFormat:@"%@ ",value];
+                }
+                keywords = [keywords stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            }
             //NSLog(@"Scanned: key: %@ biz_name: %@ address: %@, city: %@ state: %@, zip_code: %@", ref, name, address, city, state, zip_code);
         }
         @catch (NSException *exception) {
@@ -161,13 +173,15 @@
                 NSLog(@"Search keywords: %@ got error: %@. Will retry %lu more time", keywords, [error description], (long)retry);
                
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                    [self searchRows:@[row] outputFile:outFile retry:retry-1];
+                    [self searchRows:@[row] outputFile:outFile retry:retry-1 filter:filter];
                 });
             } else {
                 for (MKMapItem *mapItem  in mapItems) {
                     NSString *phoneNumber = [mapItem.phoneNumber stringByReplacingOccurrencesOfString:@"^\\+1\\-?" withString:@"" options:NSRegularExpressionSearch range:NSMakeRange(0, [mapItem.phoneNumber length])];
-                    NSLog(@"Phonenumber %@ stripped to %@", mapItem.phoneNumber, phoneNumber);
-                    NSString *out = [NSString stringWithFormat:@"%@,%@,%@ %@,%@,%@,%@,%@\n", ref, mapItem.name, mapItem.placemark.subThoroughfare,  mapItem.placemark.thoroughfare, mapItem.placemark.locality, mapItem.placemark.postalCode, phoneNumber, mapItem.url];
+                    phoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
+                    phoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@"-" withString:@""];
+                    NSString *found = [phoneNumber isEqualToString:did]?@"TRUE":@"FALSE";
+                    NSString *out = [NSString stringWithFormat:@"%@,%@,%@ %@,%@,%@,%@,%@,%@\n", ref, mapItem.name, mapItem.placemark.subThoroughfare,  mapItem.placemark.thoroughfare, mapItem.placemark.locality, mapItem.placemark.postalCode, phoneNumber, mapItem.url,found];
                     
                     [self writeCSV:out filename:outFile];
                     

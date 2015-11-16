@@ -17,7 +17,7 @@
 @interface MapSearch : NSObject
 
 
-- (void)readCSV:(NSString*)inputFile outputFile:(NSString*)outputFile maxRetry:(NSInteger)maxRetry withCompletionHandler:(void (^)(NSError *error)) block;
+- (void)readCSV:(NSString*)inputFile outputFile:(NSString*)outFile maxRetry:(NSInteger)retry fiter:(NSString*)filter withCompletionHandler:(void (^)(NSError *error)) block;
 
 @end
 

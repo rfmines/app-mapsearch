@@ -18,10 +18,16 @@
 @implementation AppDelegate
 @synthesize mapsearch;
 
+- (NSString*)getUsage
+{
+    NSString *usage = @"\nUsage: MapSearch <inputfile> <outputfile> <max_retry> <keyword_filter>\n";
+    usage = [usage stringByAppendingString:@"Example: MapSearch /Users/ooma/10k.csv /Users/ooma/10k_out.csv 5 name,address,city,state,zip_code\n\n"];
+    usage = [usage stringByAppendingString:@"Valid keyword filters are : name,address,city,state,zip_code should be comma delimited.\nIf filter is empty, name and zip_code will be used as default search keywords"];
+    return usage;
+}
 - (void) printUsage
 {
-    NSLog(@"Usage: MapSearch <inputfile> <outputfile>\n");
-    NSLog(@"Example: MapSearch /Users/ooma/10k.csv /Users/ooma/10k_out.csv\n");
+    NSLog([self getUsage]);
 }
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
@@ -35,7 +41,7 @@
             [self printUsage];
            
 
-            NSAlert *alert = [NSAlert alertWithMessageText:@"Invalid arguments" defaultButton:@"Close" alternateButton:nil otherButton:nil informativeTextWithFormat:@"Usage: MapSearch <inputfile> <outputfile> <maxretry>\nExample: MapSearch /Users/ooma/10k.csv /Users/ooma/10k_out.csv 3\n"];
+            NSAlert *alert = [NSAlert alertWithMessageText:@"Invalid arguments" defaultButton:@"Close" alternateButton:nil otherButton:nil informativeTextWithFormat:[self getUsage]];
             [alert runModal];
             [NSApp terminate:self];
         }
@@ -45,6 +51,7 @@
                 NSString *inputFile = [args objectAtIndex:1];
                 NSString *outputFile = [args objectAtIndex:2];
                 NSInteger maxRetry = MAX_RETRY;
+                NSString *filter = nil;
                 
                 if ([args count] > 3) {
                     maxRetry = [[args objectAtIndex:3] integerValue] ;
@@ -53,7 +60,11 @@
                     }
                 }
                 
-                [mapsearch readCSV:inputFile outputFile:outputFile maxRetry:(NSInteger)maxRetry withCompletionHandler:^(NSError *error) {
+                if ([args count] > 4) {
+                    filter = [args objectAtIndex:4];
+                }
+                
+                [mapsearch readCSV:inputFile outputFile:outputFile maxRetry:maxRetry fiter:filter withCompletionHandler:^(NSError *error) {
                     
                 }];
             }
