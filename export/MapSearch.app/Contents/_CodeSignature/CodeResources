@@ -4,6 +4,10 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>Resources/AppIcon.icns</key>
+		<data>
+		zOLkbGkvJXogwt1cHk2eiDwaigc=
+		</data>
 		<key>Resources/Base.lproj/MainMenu.nib</key>
 		<dict>
 			<key>hash</key>
@@ -20,6 +24,10 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>Resources/AppIcon.icns</key>
+		<data>
+		zOLkbGkvJXogwt1cHk2eiDwaigc=
+		</data>
 		<key>Resources/Base.lproj/MainMenu.nib</key>
 		<dict>
 			<key>hash</key>
@@ -35,7 +43,7 @@
 		</data>
 		<key>embedded.provisionprofile</key>
 		<data>
-		CwGcwAeckq6FpWcdQmPN117ezxM=
+		8Mk3eJFrh53I3Pak9dUoLzH2Q64=
 		</data>
 	</dict>
 	<key>rules</key>
