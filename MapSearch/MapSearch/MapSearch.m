@@ -13,6 +13,8 @@
 -(NSString*)trim;
 @end
 
+
+
 @implementation NSString (NSStringTrimSpace)
 
 -(NSString*)trim
@@ -30,7 +32,7 @@
 
 @implementation MapSearch
 
-#define kSearchDone @"SearchDone"
+
 
 @synthesize workCount;
 @synthesize outputFile;
@@ -40,13 +42,14 @@
         self.workCount = 0;
         self.outputFile = nil;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onSearchDone:) name:kSearchDone object:nil];
+        
     }
     return self;
 }
 
 - (void)dealloc
 {
-    NSLog(@"Search dealloc");
+    NSLog(@"Cleaning up search");
     [self closeOutputFile];
 }
 
@@ -60,8 +63,12 @@
     }
 }
 
-- (void)readCSV:(NSString*)inputFile outputFile:(NSString*)outFile maxRetry:(NSInteger)retry fiter:(NSString*)filter withCompletionHandler:(void (^)(NSError *error)) block
+- (void)readCSV:(NSDictionary*)data withCompletionHandler:(void (^)(NSError *error)) block
 {
+    NSString *inputFile = [data objectForKey:@"input"];
+    NSString *outFile = [data objectForKey:@"output"];
+    NSInteger retry = [[data objectForKey:@"retry"] integerValue];
+
     if (self.workCount > 0) {
         NSLog(@"Search already in progress..");
         if (block) {
@@ -79,6 +86,8 @@
         if (block) {
             block(outError);
         }
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:kSearchDone object:self];
         return;
     }
         NSLog(@"Opened input file: %@ with max_retry: %lu", inputFile, retry);
@@ -90,7 +99,7 @@
     
     [self writeCSV:outputHeader filename:outFile];
         
-        [self searchRows:rows outputFile:outFile retry:retry filter:filter];
+        [self searchRows:rows retry:retry data:data];
     
     if (block) {
         block(nil);
@@ -99,23 +108,48 @@
     });
 }
 
-- (void)searchRows:(NSArray*)rows outputFile:(NSString*)outFile retry:(NSInteger)retry filter:(NSString*)filter
+- (void)searchRows:(NSArray*)rows retry:(NSInteger) retry data:(NSDictionary*)data
 {
     NSLocale *l_en = [[NSLocale alloc] initWithLocaleIdentifier: @"en_US"];
     NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
     [f setLocale: l_en];
-    __block NSInteger curWork = 0;
-    NSInteger count = [rows count];
-    
+    NSInteger maxQuery = [[data objectForKey:@"max-query"] integerValue];
+    NSInteger sleep = [[data objectForKey:@"sleep"] integerValue];
+    NSInteger total = 0;
     for (NSString *_row in rows) {
         NSString *row = [_row trim];
         if (row == nil ||
-            row.length == 0 ||
-            count == 0) {
+            row.length == 0) {
             
             [[NSNotificationCenter defaultCenter] postNotificationName:kSearchDone object:self];
             continue;
         }
+
+        if ([self searchRow:row retry:retry data:data] == FALSE) {
+            continue;
+        }
+        
+        total++;
+        if (total%maxQuery == 0) {
+            NSLog(@"Sleeping after running %ld search", maxQuery);
+            [NSThread sleepForTimeInterval:sleep];
+        }
+    }
+}
+
+-(BOOL)searchRow:(NSString*)row retry:(NSInteger) retry data:(NSDictionary*)data
+{
+    NSString *outFile = [data objectForKey:@"output"];
+    NSInteger sleep = [[data objectForKey:@"sleep"] integerValue];
+    NSInteger sleepInSearch = [[data objectForKey:@"sleep-in-search"] integerValue];
+    NSInteger maxQuery = [[data objectForKey:@"max-query"] integerValue];
+    NSString *filter = [data objectForKey:@"filter"];
+    
+    NSLocale *l_en = [[NSLocale alloc] initWithLocaleIdentifier: @"en_US"];
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    [f setLocale: l_en];
+    __block NSInteger curWork = 0;
+   
         NSString *ref, *did, *name, *address, *city, *state, *zip_code;
         NSString *keywords;
         
@@ -123,7 +157,7 @@
             NSArray *cols = [row componentsSeparatedByString:@","];
             if (cols == nil || [cols count] == 0) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:kSearchDone object:self];
-                continue;
+                return FALSE;
             }
             
             ref = [cols[0] trim];
@@ -138,10 +172,9 @@
                 [f numberFromString:did] == 0) {
                 NSLog(@"Skipping line '%@' doesn't seem correct", row);
                 [[NSNotificationCenter defaultCenter] postNotificationName:kSearchDone object:self];
-                continue;
+                return FALSE;
             }
             
-            //keywords = [[NSString stringWithFormat:@"%@ %@ %@ %@ %@", name, address, city, state, zip_code] stringByReplacingOccurrencesOfString:@"\"" withString:@""];
             keywords = [[NSString stringWithFormat:@"%@ %@", name, zip_code] stringByReplacingOccurrencesOfString:@"\"" withString:@""];
             
             if (filter != nil) {
@@ -161,19 +194,19 @@
         @catch (NSException *exception) {
             NSLog(@"Exception: %@", [exception description]);
             [[NSNotificationCenter defaultCenter] postNotificationName:kSearchDone object:self];
-            continue;
+            return FALSE;
         }
 
         if (retry == 0) {
             [[NSNotificationCenter defaultCenter] postNotificationName:kSearchDone object:self];
-            continue;
+            return FALSE;
         }
         [self search:keywords ref:(NSString*)ref withCompletionHandler:^(NSError *error, NSString *ref, NSArray *mapItems) {
             if ( error ) {
                 NSLog(@"Search keywords: %@ got error: %@. Will retry %lu more time", keywords, [error description], (long)retry);
-               
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                    [self searchRows:@[row] outputFile:outFile retry:retry-1 filter:filter];
+                    [self searchRow:row retry:retry-1 data:data];
+                    
                 });
             } else {
                 for (MKMapItem *mapItem  in mapItems) {
@@ -194,15 +227,17 @@
         }];
         
         curWork++;
-        if (curWork >= 2) {
+        if (curWork >= maxQuery) {
+            /* Wait until all searches finish */
+            NSLog(@"Sleeping for %ld seconds ...", sleep);
             do {
-                [NSThread sleepForTimeInterval:0.0];
+                [NSThread sleepForTimeInterval:sleep];
             }while(curWork != 0);
         } else {
-            [NSThread sleepForTimeInterval:0.0];
+            [NSThread sleepForTimeInterval:sleepInSearch];
         }
-        
-    }
+    
+    return TRUE;
 }
 
 - (NSString*)defaultOutputFilename

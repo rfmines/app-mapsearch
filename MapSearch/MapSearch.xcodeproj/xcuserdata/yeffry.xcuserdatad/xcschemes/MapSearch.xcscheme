@@ -84,15 +84,19 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "${SRCROOT}/../500-control.csv"
+            argument = "-input ${SRCROOT}/../500-control.csv"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "${SRCROOT}/../500-control-out.csv"
+            argument = "-output ${SRCROOT}/../500-control-out.csv"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "5"
+            argument = "-retry 2"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-sleep 30 -max-query 10 -filter name,city,state"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

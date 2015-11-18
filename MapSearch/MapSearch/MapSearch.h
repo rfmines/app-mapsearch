@@ -9,6 +9,8 @@
 #ifndef MapSearch_MapSearch_h
 #define MapSearch_MapSearch_h
 
+#define kSearchDone @"SearchDone"
+
 #import <CoreLocation/CoreLocation.h>
 
 #import <MapKit/MapKit.h>
@@ -16,8 +18,7 @@
 
 @interface MapSearch : NSObject
 
-
-- (void)readCSV:(NSString*)inputFile outputFile:(NSString*)outFile maxRetry:(NSInteger)retry fiter:(NSString*)filter withCompletionHandler:(void (^)(NSError *error)) block;
+- (void)readCSV:(NSDictionary*)data withCompletionHandler:(void (^)(NSError *error)) block;
 
 @end
 
